@@ -32,12 +32,12 @@ class Admin
      */
     private $mdpAdmin;
 
-
     /**
-     * 
-     * @ORM\ManyToMany(targetEntity="App\Entity\Task", mappedBy="admin")
+     * @ORM\ManyToOne(targetEntity=Task::class, inversedBy="admins")
      */
     private $task;
+
+
 
 
     public function getId(): ?int
@@ -81,23 +81,17 @@ class Admin
         return $this;
     }
 
-    /**
-     * Get the value of task
-     */ 
-    public function getTask()
+    public function getTask(): ?Task
     {
         return $this->task;
     }
 
-    /**
-     * Set the value of task
-     *
-     * @return  self
-     */ 
-    public function setTask($task)
+    public function setTask(?Task $task): self
     {
         $this->task = $task;
 
         return $this;
     }
+
+    
 }

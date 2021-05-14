@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\DeveloperRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,9 +57,7 @@ class Developer
     private $task;
 
     /**
-     * 
-     * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", inversedBy="developers")
-     * @ORM\JoinTable(name="developers_categorie")
+     * @ORM\ManyToMany(targetEntity=Categorie::class, inversedBy="developers")
      */
     private $categorie;
 
@@ -66,6 +65,10 @@ class Developer
     {
         $this->categorie = new ArrayCollection();
     }
+
+   
+
+    
 
     public function getId(): ?int
     {
@@ -165,22 +168,27 @@ class Developer
     }
 
     /**
-     * Get the value of categorie
-     */ 
-    public function getCategorie()
+     * @return Collection|Categorie[]
+     */
+    public function getCategorie(): Collection
     {
         return $this->categorie;
     }
 
-    /**
-     * Set the value of categorie
-     *
-     * @return  self
-     */ 
-    public function setCategorie($categorie)
+    public function addCategorie(Categorie $categorie): self
     {
-        $this->categorie = $categorie;
+        if (!$this->categorie->contains($categorie)) {
+            $this->categorie[] = $categorie;
+        }
 
         return $this;
     }
+
+    public function removeCategorie(Categorie $categorie): self
+    {
+        $this->categorie->removeElement($categorie);
+
+        return $this;
+    }
+
 }

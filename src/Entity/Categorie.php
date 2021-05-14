@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,11 +25,7 @@ class Categorie
     private $nameCat;
 
 
-    /**
-     * 
-     * @ORM\ManyToMany(targetEntity="App\Entity\Developer", mappedBy="categorie")
-     */
-    private $developer;
+   
 
     /**
      * Les categories sont liées à une tache
@@ -37,10 +34,16 @@ class Categorie
      */
     private $task;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Developer::class, mappedBy="categorie")
+     */
+    private $developers;
+
 
     public function __construct()
     {
         $this->task =new ArrayCollection();
+        $this->developers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -60,25 +63,7 @@ class Categorie
         return $this;
     }
 
-    /**
-     * Get the value of developer
-     */ 
-    public function getDeveloper()
-    {
-        return $this->developer;
-    }
-
-    /**
-     * Set the value of developer
-     *
-     * @return  self
-     */ 
-    public function setDeveloper($developer)
-    {
-        $this->developer = $developer;
-
-        return $this;
-    }
+   
 
     /**
      * Get les categories sont liées à une tache
@@ -96,6 +81,33 @@ class Categorie
     public function setTask($task)
     {
         $this->task = $task;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Developer[]
+     */
+    public function getDevelopers(): Collection
+    {
+        return $this->developers;
+    }
+
+    public function addDeveloper(Developer $developer): self
+    {
+        if (!$this->developers->contains($developer)) {
+            $this->developers[] = $developer;
+            $developer->addCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDeveloper(Developer $developer): self
+    {
+        if ($this->developers->removeElement($developer)) {
+            $developer->removeCategorie($this);
+        }
 
         return $this;
     }

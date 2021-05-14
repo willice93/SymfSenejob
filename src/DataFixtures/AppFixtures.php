@@ -24,18 +24,23 @@ class AppFixtures extends Fixture
        $admin->setEmailAdmin($faker->email);
        $admin->setMdpAdmin('password');
        $manager->persist($admin);
+
+       for ($i=0; $i <20 ; $i++)
+       {
+
+       
                          $task= new Task();
                          $task->setDocTask('https://place-hold.it/300x500');
                         $task->setNameTask($faker->word);
                          $task->setTopicTask($faker->word);
                           $manager->persist($task);
-                        
+                         $phone= (int) $faker->phoneNumber;
                              $developer= new Developer;
                               $developer->setFirstNameDeveloper($faker->lastname);
                               $developer->setUserNameDeveloper($faker->lastname);
                               $developer->setEmailDeveloper($faker->email);
-                              $developer->setPhoneDeveloper($faker->phoneNumber+1);
-                              $developer-> setAdressDeveloper('quelquepart');
+                              $developer->setPhoneDeveloper($phone);
+                              $developer-> setAdressDeveloper($faker->address);
                               $developer->setLastNameDeveloper($faker->lastname);
                               $developer->setTask($task);
                               $manager->persist($developer);
@@ -43,12 +48,12 @@ class AppFixtures extends Fixture
 
                              $cat= new Categorie ;
                               $cat->setNameCat($faker->word);
-                              $cat->getDeveloper($developer);
+                              $cat->addDeveloper($developer);
                               $cat->setTask($task);
                             
                              
                               $manager->persist($cat);
-                              
+        }
                               $manager->flush();
     }
     

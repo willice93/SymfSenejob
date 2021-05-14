@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TaskRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,25 +35,25 @@ class Task
     private $topicTask;
 
 
-    /**
-     * 
-     * @ORM\ManyToMany(targetEntity="App\Entity\Admin", inversedBy="tasks")
-     * @ORM\JoinTable(name="tasks_admins")
-     */
-    private $admin;
-
+    
      /**
      * 
      * @ORM\OneToMany(targetEntity="App\Entity\Categorie", mappedBy="task")
      */
     private $categorie;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Admin::class, mappedBy="task")
+     */
+    private $admins;
+
 
 
     public function __construct()
     {
-      $this->admin = new ArrayCollection();
+     
       $this->categorie = new ArrayCollection();
+      $this->admins = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -96,25 +97,7 @@ class Task
         return $this;
     }
 
-    /**
-     * Get the value of admin
-     */ 
-    public function getAdmin()
-    {
-        return $this->admin;
-    }
-
-    /**
-     * Set the value of admin
-     *
-     * @return  self
-     */ 
-    public function setAdmin($admin)
-    {
-        $this->admin = $admin;
-
-        return $this;
-    }
+    
 
     /**
      * Get the value of categorie
@@ -132,6 +115,36 @@ class Task
     public function setCategorie($categorie)
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Admin[]
+     */
+    public function getAdmins(): Collection
+    {
+        return $this->admins;
+    }
+
+    public function addAdmin(Admin $admin): self
+    {
+        if (!$this->admins->contains($admin)) {
+            $this->admins[] = $admin;
+            $admin->setTask($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdmin(Admin $admin): self
+    {
+        if ($this->admins->removeElement($admin)) {
+            // set the owning side to null (unless already changed)
+            if ($admin->getTask() === $this) {
+                $admin->setTask(null);
+            }
+        }
 
         return $this;
     }

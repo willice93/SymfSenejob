@@ -47,6 +47,12 @@ class Task
      */
     private $admins;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Client::class, inversedBy="task", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $client;
+
 
 
     public function __construct()
@@ -145,6 +151,18 @@ class Task
                 $admin->setTask(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(Client $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }

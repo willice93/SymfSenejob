@@ -57,13 +57,13 @@ class Client
      */
     private $mdpClient;
 
-
     /**
-     * Il y a une seule tache possible par client
-     * @ORM\OneToOne(targetEntity="App\Entity\Task")
-     * @ORM\JoinColumn(name="task_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity=Task::class, mappedBy="client", cascade={"persist", "remove"})
      */
     private $task;
+
+
+   
 
 
     public function getId(): ?int
@@ -167,23 +167,21 @@ class Client
         return $this;
     }
 
-    /**
-     * Get il y a une seule tache possible par client
-     */ 
-    public function getTask()
+    public function getTask(): ?Task
     {
         return $this->task;
     }
 
-    /**
-     * Set il y a une seule tache possible par client
-     *
-     * @return  self
-     */ 
-    public function setTask($task)
+    public function setTask(Task $task): self
     {
+        // set the owning side of the relation if necessary
+        if ($task->getClient() !== $this) {
+            $task->setClient($this);
+        }
+
         $this->task = $task;
 
         return $this;
     }
+
 }

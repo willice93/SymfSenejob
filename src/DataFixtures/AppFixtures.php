@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
 
        
                          $task= new Task();
-                         $task->setDocTask('https://place-hold.it/300x500');
+                         $task->setDocTask($faker->imageUrl($width = 271, $height = 179));
                         $task->setNameTask($faker->word);
                          $task->setTopicTask($faker->word);
                          $task->setClient($client);
@@ -60,7 +60,7 @@ class AppFixtures extends Fixture
                               $developer->setLastNameDeveloper($faker->lastname);
                               $developer->setTask($task);
                               $manager->persist($developer);
-                                
+                               
 
 
                   $delivred=new DelivredTask();
@@ -75,7 +75,7 @@ class AppFixtures extends Fixture
                               $cat->setTask($task);
                             
                              
-                              $manager->persist($cat);
+                             $manager->persist($cat);
         }
                               $manager->flush();
     }

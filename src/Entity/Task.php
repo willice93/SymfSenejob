@@ -48,10 +48,12 @@ class Task
     private $admins;
 
     /**
-     * @ORM\OneToOne(targetEntity=Client::class, inversedBy="task", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="tasks")
      * @ORM\JoinColumn(nullable=false)
      */
     private $client;
+
+   
 
 
 
@@ -160,10 +162,12 @@ class Task
         return $this->client;
     }
 
-    public function setClient(Client $client): self
+    public function setClient(?Client $client): self
     {
         $this->client = $client;
 
         return $this;
     }
+
+    
 }

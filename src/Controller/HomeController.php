@@ -1,11 +1,12 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Task;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomeController extends Controller {
+class HomeController extends AbstractController {
 
 /**
  * @Route("/", name="homepage")
@@ -13,17 +14,17 @@ class HomeController extends Controller {
  */
 public function home(){
 
+$repo =$this->getDoctrine()->getRepository(Task::class);
+$tasks = $repo->findAll();
 
     $name = 'willice';
     $txt = 'Lorem ipsum dolor sit amet.'; 
     return $this->render(
-        'home.html.twig',
+        'home2.html.twig',
         [
-            // this array defines the variables passed to the template,
-            // where the key is the variable name and the value is the variable value
-            // (Twig recommends using snake_case variable names: 'foo_bar' instead of 'fooBar')
+            'tasks'=> $tasks,
             'name' => $name,
-        'txt' => $txt,
+        'txt' => $txt
         ]
     
     );

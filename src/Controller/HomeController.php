@@ -15,8 +15,8 @@ class HomeController extends AbstractController {
 public function home(){
 
 $repo =$this->getDoctrine()->getRepository(Task::class);
-$tasks = $repo->findBy([],['id' => 'desc'], 3);
-var_dump($tasks);
+$tasks = $repo->findBy([],['id' => 'desc'], 6);
+
     $name = 'willice';
     $txt = 'Lorem ipsum dolor sit amet.'; 
     return $this->render(

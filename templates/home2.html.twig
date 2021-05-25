@@ -14,9 +14,12 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                   <div class="row">
+                   
+
+                   
                     
 
-{% for task in tasks %}
+{% for i in 0..2 %}
            
                    <div class="col-md-4" >
                         <div class="item-box-blog">
@@ -24,18 +27,18 @@
                             <!--Date-->
                             <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
                             <!--Image-->
-                            <figure> <img alt="" src='{{task.docTask}}'> </figure>
+                            <figure> <img alt="" src='{{ tasks[i].docTask }}'> </figure>
                           </div>
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
                               <a href="#" tabindex="0">
-                                 <h5>{{task.nameTask}}</h5>
+                                 <h5>{{tasks[i].nameTask}}</h5>
                               </a>
                             </div>
                             <!--Data-->
                             <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> {{ task.client.lastNameClient }}, <i class="fa fa-comments-o"></i> Comments(3)</p>
+                              <p><i class="fa fa-user-o"></i> {{ tasks[i].client.lastNameClient }}, <i class="fa fa-comments-o"></i> Comments(3)</p>
                             </div>
                             <!--Text-->
                             <div class="item-box-blog-text">
@@ -57,7 +60,7 @@
                  <div class="carousel-item ">
                     <div class="row">
 
-              {% for task in tasks %}
+              {% for i in 3..5 %}
                
                  <div class="col-md-4" >
                         <div class="item-box-blog">
@@ -65,18 +68,18 @@
                             <!--Date-->
                             <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
                             <!--Image-->
-                            <figure> <img alt="" src='{{task.docTask}}'> </figure>
+                            <figure> <img alt="" src='{{tasks[i].docTask}}'> </figure>
                           </div>
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
                               <a href="#" tabindex="0">
-                                <h5>{{task.nameTask}}</h5>
+                                <h5>{{tasks[i].nameTask}}</h5>
                               </a>
                             </div>
                             <!--Data-->
                             <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i>{{ task.client.lastNameClient }}<i class="fa fa-comments-o"></i> Comments(3)</p>
+                              <p><i class="fa fa-user-o"></i>{{ tasks[i].client.lastNameClient }}<i class="fa fa-comments-o"></i> Comments(3)</p>
                             </div>
                             <!--Text-->
                             <div class="item-box-blog-text"> {{ txt }}

@@ -1,26 +1,30 @@
 {% extends 'base.html.twig' %}
 {% block category %}
+<div class="container cta-100 ">
+<div class="container ">
+ <div class="row ">
 {% for categorie in categories %} 
- <div id="sticky-header" class="main-header-area">
 
 
-<div class="container-fluid">
-<div class="header_bottom_border">
-<div class="row align-items-center">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{categorie.images}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">{{categorie.nameCat}}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-</div>
-</div>
+
+ 
+      <div class="col-md-4 mt-5" >
+    
+          <div class="card" style="width: 18rem;">
+             <img class="card-img-top" src="{{categorie.images}}" alt="Card image cap">
+              <div class="card-body">
+               <h5 class="card-title">{{categorie.nameCat}}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+               </div>
+    </div>
+
 </div>
 
 {% endfor %}
+</div>
+</div>
+</div>
 
 {% endblock %}
 

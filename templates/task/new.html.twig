@@ -1,8 +1,24 @@
 {% extends 'base.html.twig' %}
-{% block carroussel%}<h1>ajouter une tache </h1>{% endblock %}
+
 {% block formulaire %}
 <div class="container">
-<h1>ajouter une tache </h1>
-{{ form(form) }}
+    <div class="row" style="justify-content: center;width: 30em;padding-block: 150px; margin-left: 20em;">
+        <h1 style='margin-bottom:30px; color: #0d1367;'>ajouter une tache </h1>
+            <div class="formtask" style="text-align: end;">
+                
+                {{ form_start(form) }}
+                <div style='margin-bottom: 20px;'>
+                    {{ form_row(form.docTask) }}
+                </div>
+                <div style='margin-bottom: 20px;'>
+                    {{ form_row(form.nameTask) }}
+                </div>
+                    {{ form_row(form.topicTask) }}
+                <div style='margin-bottom: 20px; margin-top: 20px'>
+                    {{ form_row(form.client) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+    </div>
 </div>
 {% endblock %}

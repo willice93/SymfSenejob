@@ -39,6 +39,11 @@ class Categorie
      */
     private $developers;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $images;
+
 
     public function __construct()
     {
@@ -108,6 +113,18 @@ class Categorie
         if ($this->developers->removeElement($developer)) {
             $developer->removeCategorie($this);
         }
+
+        return $this;
+    }
+
+    public function getImages(): ?string
+    {
+        return $this->images;
+    }
+
+    public function setImages(?string $images): self
+    {
+        $this->images = $images;
 
         return $this;
     }

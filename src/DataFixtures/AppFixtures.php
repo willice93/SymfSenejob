@@ -73,6 +73,7 @@ class AppFixtures extends Fixture
                               $cat->setNameCat($faker->word);
                               $cat->addDeveloper($developer);
                               $cat->setTask($task);
+                              $cat->setImages('https://place-hold.it/300x500');
                             
                              
                              $manager->persist($cat);

@@ -29,6 +29,14 @@ $tasks = $repo->findBy([],['id' => 'desc'], 6);
     
     );
 }
+/**
+ * @Route("/contact", name="contact")
+ * 
+ */
+public function index(): Response
+{
+    return $this->render('contact.html.twig');
+}
 }
 
 

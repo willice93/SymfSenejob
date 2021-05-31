@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block formulaire %}
+<div class="container" style="justify-content: center; ">
+    <div class="row" style="width:50px ;">
+        <div class="formregister" style="padding-top: 150px; margin-bottom: 100px; margin-left: 30em;">
+            {% for flashError in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+            {% endfor %}
+
+                <h1>Profil</h1>
+
+            {{ form_start(clientForm) }}
+          
+              <button type="submit" class="btn">Creer profile</button> 
+            {{ form_end(clientForm) }}
+             
+        </div>
+     </div>
+ </div>
+{% endblock %}

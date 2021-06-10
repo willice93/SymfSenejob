@@ -54,7 +54,7 @@
                                             <li><a href="{{path('homepage')}}">Accueil</a></li>
                                             <li><a href="{{path('categorie')}}">Trouver une mission </a></li>
                                             
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="{{path('contact')}}">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -64,9 +64,14 @@
                                     <div class="phone_num d-none d-xl-block">
                                         <a href="{{path('app_register')}}">Créer un compte</a>
                                     </div>
+                                    {% if not app.user %}
                                     <div class="d-none d-lg-block">
                                         <a class="boxed-btn3" href="{{path('app_login')}}">Login</a>
+                                        
+                                        {% else %}
+                                        <a class="boxed-btn3" href="{{path('app_logout')}}">Déconnexion</a>
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="col-12">
@@ -82,6 +87,7 @@
          {% block carroussel %} {% endblock %}
          {% block formulaire %} {% endblock %}
          {% block category %} {% endblock %}
+        {% block body %} {% endblock %}
          {% block footer %} <!-- footer start -->
     <footer class="footer">
         <div class="footer_top">
@@ -185,7 +191,7 @@
         </div>
     </footer>
     <!--/ footer end  --> {% endblock %}
-        {% block body %}{% endblock %}
+       
         {% block javascripts %}<!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>

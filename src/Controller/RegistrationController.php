@@ -46,5 +46,10 @@ class RegistrationController extends AbstractController
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+
+
+        if ( $this -> isGranted ( "IS_AUTHENTICATED_FULLY" ) ){
+            return $this -> redirectToRoute ( "homepage" ) ; 
+    }    
     }
 }

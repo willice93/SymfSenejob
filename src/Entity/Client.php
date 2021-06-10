@@ -64,6 +64,26 @@ class Client
      */
     private $tasks;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $avatar;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $compagny;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $website;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nickname;
+
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
@@ -210,5 +230,53 @@ public function __toString(){
         // to show the id of the Category in the select
         // return $this->id;
     }
+
+public function getAvatar(): ?string
+{
+    return $this->avatar;
+}
+
+public function setAvatar(?string $avatar): self
+{
+    $this->avatar = $avatar;
+
+    return $this;
+}
+
+public function getCompagny(): ?string
+{
+    return $this->compagny;
+}
+
+public function setCompagny(?string $compagny): self
+{
+    $this->compagny = $compagny;
+
+    return $this;
+}
+
+public function getWebsite(): ?string
+{
+    return $this->website;
+}
+
+public function setWebsite(?string $website): self
+{
+    $this->website = $website;
+
+    return $this;
+}
+
+public function getNickname(): ?string
+{
+    return $this->nickname;
+}
+
+public function setNickname(?string $nickname): self
+{
+    $this->nickname = $nickname;
+
+    return $this;
+}
     
 }

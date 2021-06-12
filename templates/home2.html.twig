@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block carroussel %}
 <!--/ catagory_area -->
-     <div class="container cta-100 ">
+  
         <div class="container">
           <div class="row blog">
             <div class="col-md-12">
@@ -42,7 +42,7 @@
                             </div>
                             <!--Text-->
                             <div class="item-box-blog-text">
-                              <p>{{ txt }}</p>
+                              <p>{{tasks[i].topicTask}}</p>
                             </div>
                             <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
                             <!--Read More Button-->
@@ -82,8 +82,8 @@
                               <p><i class="fa fa-user-o"></i>{{ tasks[i].client.lastNameClient }}<i class="fa fa-comments-o"></i> Comments(3)</p>
                             </div>
                             <!--Text-->
-                            <div class="item-box-blog-text"> {{ txt }}
-                              <p>Lorem ipsum dolor sit amet, adipiscing. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor sit amet, adipiscing. Lorem ipsum dolor sit amet, adipiscing. Lorem ipsum dolor sit amet, consectetuer adipiscing. Lorem ipsum dolor.</p>
+                            <div class="item-box-blog-text">
+                              <p>{{tasks[i].topicTask}}</p>
                             </div>
                             <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
                             <!--Read More Button-->
@@ -109,7 +109,7 @@
               <!--.container-->
            
            <!--gros container--> </div>
-         </div>
+       
                       
                       {% endblock %}
 

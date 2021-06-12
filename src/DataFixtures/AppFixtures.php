@@ -47,8 +47,9 @@ class AppFixtures extends Fixture
                          $task= new Task();
                          $task->setDocTask($faker->imageUrl($width = 271, $height = 179));
                         $task->setNameTask($faker->word);
-                         $task->setTopicTask($faker->word);
+                         $task->setTopicTask($faker->realText($maxNbChars = 200, $indexSize = 2));
                          $task->setClient($client);
+                         $task->setCreatAt($faker->dateTime($max = 'now', $timezone = null));
                           $manager->persist($task);
                          
                              $developer= new Developer;
@@ -73,7 +74,7 @@ class AppFixtures extends Fixture
                               $cat->setNameCat($faker->word);
                               $cat->addDeveloper($developer);
                               $cat->setTask($task);
-                              $cat->setImages('https://place-hold.it/300x500');
+                              $cat->setImages('https://place-hold.it/300x300');
                             
                              
                              $manager->persist($cat);

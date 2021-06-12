@@ -53,6 +53,11 @@ class Task
      */
     private $client;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $creatAt;
+
    
 
 
@@ -165,6 +170,18 @@ class Task
     public function setClient(?Client $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getCreatAt(): ?\DateTimeInterface
+    {
+        return $this->creatAt;
+    }
+
+    public function setCreatAt(?\DateTimeInterface $creatAt): self
+    {
+        $this->creatAt = $creatAt;
 
         return $this;
     }

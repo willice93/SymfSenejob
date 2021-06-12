@@ -61,6 +61,16 @@ class Developer
      */
     private $categorie;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $balance;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $created;
+
     public function __construct()
     {
         $this->categorie = new ArrayCollection();
@@ -187,6 +197,30 @@ class Developer
     public function removeCategorie(Categorie $categorie): self
     {
         $this->categorie->removeElement($categorie);
+
+        return $this;
+    }
+
+    public function getBalance(): ?int
+    {
+        return $this->balance;
+    }
+
+    public function setBalance(?int $balance): self
+    {
+        $this->balance = $balance;
+
+        return $this;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(?\DateTimeInterface $created): self
+    {
+        $this->created = $created;
 
         return $this;
     }

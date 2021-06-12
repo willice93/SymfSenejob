@@ -5,7 +5,7 @@
         <meta name="description" content="">
    
 
-        <title>{% block title %}welcom{% endblock %}</title>
+        <title>{% block title %}Senejobs{% endblock %}</title>
         {% block stylesheets %}   <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -61,10 +61,11 @@
                             </div>
                             <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                                 <div class="Appointment">
+                                    
+                                    {% if not app.user %}
                                     <div class="phone_num d-none d-xl-block">
                                         <a href="{{path('app_register')}}">Créer un compte</a>
                                     </div>
-                                    {% if not app.user %}
                                     <div class="d-none d-lg-block">
                                         <a class="boxed-btn3" href="{{path('app_login')}}">Login</a>
                                         
@@ -83,11 +84,13 @@
                 </div>
             </div>
         </div></header><!-- header-end -->
+        <div class="container cta-100 ">
          {% endblock %}
          {% block carroussel %} {% endblock %}
          {% block formulaire %} {% endblock %}
          {% block category %} {% endblock %}
         {% block body %} {% endblock %}
+        </div>
          {% block footer %} <!-- footer start -->
     <footer class="footer">
         <div class="footer_top">

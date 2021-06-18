@@ -4,8 +4,8 @@
 
 {% block formulaire %}
 <div class="container">
-<div class="row" style="padding: 150px;">
-<div class="formlog" style="margin-left: auto; margin-right: auto; width: 25em;">
+<div class="row" >
+<div class="col-sm-12 col-lg-12">
 <form method="post" style="background-color: #e8e8e54d;">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

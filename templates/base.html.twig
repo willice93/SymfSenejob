@@ -57,7 +57,8 @@
                                             <li><a href="{{path('contact')}}">Contact</a></li>
                                             <div class=' d-lg-none '>
                                              {% if not app.user %}
-                                                <li ><a href ="{{path('app_register')}}">Connexion</a></li>
+                                                <li ><a href ="{{path('app_register')}}">Creer un compte</a></li>
+                                                <li ><a href ="{{path('app_login')}}">Connexion</a></li>
                                              {% else %}
                                                 <li ><a href ="{{path('app_logout')}}">Deconnexion</a></li>
                                              </div>

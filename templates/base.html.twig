@@ -6,7 +6,7 @@
    
 
         <title>{% block title %}Senejobs{% endblock %}</title>
-          <meta name="description" content="">
+        {% block stylesheets %}   <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
@@ -27,7 +27,7 @@
 
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-</head>
+</head>{% endblock %}
 
         
     
@@ -55,11 +55,21 @@
                                             <li><a href="{{path('categorie')}}">Trouver une mission </a></li>
                                             
                                             <li><a href="{{path('contact')}}">Contact</a></li>
+                                            <div class=' d-lg-none '>
+                                             {% if not app.user %}
+                                                <li ><a href ="{{path('app_register')}}">Connexion</a></li>
+                                             {% else %}
+                                                <li ><a href ="{{path('app_logout')}}">Deconnexion</a></li>
+                                             </div>
+                                             {% endif %}
+                                        
+                                
                                         </ul>
                                     </nav>
                                 </div>
+                                
                             </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="col-xl-3 col-lg-3 d-lg-block">
                                 <div class="Appointment">
                                     
                                     {% if not app.user %}
@@ -70,7 +80,7 @@
                                         <a class="boxed-btn3" href="{{path('app_login')}}">Login</a>
                                         
                                         {% else %}
-                                        <a class="boxed-btn3" href="{{path('app_logout')}}">Déconnexion</a>
+                                        <a class="boxed-btn3 d-none d-lg-block" href="{{path('app_logout')}}">Déconnexion</a>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -195,7 +205,7 @@
     </footer>
     <!--/ footer end  --> {% endblock %}
        
-     <!-- JS here -->
+        {% block javascripts %}<!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -225,6 +235,6 @@
     <script src="js/mail-script.js"></script>
 
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script>{% endblock %}
     </body>
 </html>

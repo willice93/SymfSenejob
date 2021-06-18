@@ -45,7 +45,8 @@ class AppFixtures extends Fixture
 
        
                          $task= new Task();
-                         $task->setDocTask($faker->imageUrl($width = 271, $height = 179));
+                          $task->setDocTask($faker->imageUrl($width = 271, $height = 179));
+                         $task->setDocTask('https://place-hold.it/271x179');
                         $task->setNameTask($faker->word);
                          $task->setTopicTask($faker->realText($maxNbChars = 200, $indexSize = 2));
                          $task->setClient($client);

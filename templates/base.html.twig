@@ -6,7 +6,7 @@
    
 
         <title>{% block title %}Senejobs{% endblock %}</title>
-        {% block stylesheets %}   <meta name="description" content="">
+       <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
@@ -24,12 +24,15 @@
     <link rel="stylesheet" href="css/gijgo.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/slicknav.css">
-
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-</head>{% endblock %}
+       
+       
+       
+        {% block stylesheets %}   
+{% endblock %}
 
-        
+        </head>
     
     <body>
     {% block header %} 
@@ -206,7 +209,7 @@
     </footer>
     <!--/ footer end  --> {% endblock %}
        
-        {% block javascripts %}<!-- JS here -->
+        <!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -234,8 +237,8 @@
     <script src="js/jquery.form.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/mail-script.js"></script>
-
-
-    <script src="js/main.js"></script>{% endblock %}
+<script src="js/main.js"></script>
+{% block javascripts %}
+    {% endblock %}
     </body>
 </html>

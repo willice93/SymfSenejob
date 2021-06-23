@@ -12,10 +12,16 @@ use App\Entity\Developer;
 use App\Entity\DelivredTask;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+       private $passwordEncoder;
 
+       public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+       {
+           $this->passwordEncoder = $passwordEncoder;
+       }
     
     public function load(ObjectManager $manager)
     {
@@ -25,8 +31,11 @@ class AppFixtures extends Fixture
         $roles[]='ROLE_ADMIN';
         $user=new User;
         $user->setEmail('willice@dev2sd.fr')
-            ->setPassword('password')
-            ->setRoles($roles);
+            ->setRoles($roles)
+           ->setPassword($this->passwordEncoder->encodePassword(
+                           $user,
+                           'password'
+                       ));
             $manager->persist($user);
 
        //creation d'un admin 

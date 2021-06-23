@@ -4,11 +4,12 @@ namespace App\DataFixtures;
 
 use Faker;
 use App\Entity\Task;
+use App\Entity\User;
 use App\Entity\Admin;
-use App\Entity\Categorie;
 use App\Entity\Client;
-use App\Entity\DelivredTask;
+use App\Entity\Categorie;
 use App\Entity\Developer;
+use App\Entity\DelivredTask;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -20,6 +21,14 @@ class AppFixtures extends Fixture
     {
        //importation de faker librairie
         $faker = Faker\Factory::create('fr_FR');
+        //creation d'un seul user admin dans User
+        $roles[]='ROLE_ADMIN';
+        $user=new User;
+        $user->setEmail('willice@dev2sd.fr')
+            ->setPassword('password')
+            ->setRoles($roles);
+            $manager->persist($user);
+
        //creation d'un admin 
        $admin= new Admin();
        $admin->setUserNameAdmin($faker->lastname);
